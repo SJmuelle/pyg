@@ -1,0 +1,110 @@
+<div class="container mx-auto px-4 h-full">
+  <div class="flex content-center items-center justify-center h-full">
+    <div class="w-full px-4">
+      <div class="relative   min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0">
+        <div class="rounded-t mb-0 px-6 py-6">
+          <div class="text-center mb-3">
+            <img alt="logo fintra" class="mx-auto" src="assets/img/Logo-Fintra.png" />
+          </div>
+          <hr class="mt-6 border-b-1 border-blueGray-300" />
+        </div>
+        <div class=" px-4 lg:px-10 py-10 pt-0">
+          <form [formGroup]="form">
+            <div class="container px-4 mx-auto">
+              <div class="flex flex-wrap">
+                <div class=" w-full px-4 py-4 flex-1">
+                  <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                    Empresa
+                  </label>
+                  <select name="" id="" class="w-full" formControlName="empresa">
+                    <option value="FINT">Fintra</option>
+                    <option value="GEOT">Geotech</option>
+                    <option value="SELE">Selectrik</option>
+                    <option value="FINL">Fintralogistics</option>
+                  </select>
+                </div>
+
+                <div class=" w-full px-4 py-4 flex-1">
+                  <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                    Mes inicial
+                  </label>
+                  <input type="month" formControlName="fechaInicial"  min="2017-01" 
+                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" />
+                </div>
+                <div class=" w-full px-4 py-4 flex-1">
+                  <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2" htmlFor="grid-password">
+                    Mes Final
+                  </label>
+                  <input type="month" formControlName="fechaFinal"  [min]="form.value.fechaInicial"   [max]="form.value.fechaInicial.split('-')[0]+'-12'" 
+                    class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" />
+                </div>
+                <div class=" w-full px-4  py-4 flex-1">
+                  <label class="inline-flex items-center cursor-pointer pt-8">
+                    <input id="customCheckLogin" type="checkbox" formControlName="step"
+                      class="form-checkbox border-0 text-blueGray-700 ml-1 w-5 h-5 ease-linear transition-all duration-150 rounded" />
+                    <span class="ml-2 text-sm font-semibold text-blueGray-600">
+                      Actualizar BI
+                    </span>
+                  </label>
+                </div>
+              </div>
+              <div class="flex flex-wrap">
+                <div class=" w-full px-4  py-4 flex-1">
+                  <div class="text-center mt-6">
+                    <button class="
+                       text-white {{form.invalid?'bg-blueGray-700':'bg-lightBlue-500'}}
+                        text-sm font-bold
+                         uppercase
+                          px-6 py-3 rounded
+                           shadow hover:shadow-lg
+                            outline-none focus:outline-none
+                             mr-1 mb-1 w-full ease-linear " type="button" (click)="generate()"
+                      [disabled]="form.invalid">
+                      Actualizar
+                    </button>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-wrap">
+
+                <ng-container *ngFor="let item of listado">
+                  <div class=" w-full px-4  py-4 flex-1">
+                    <div class="border-b pb-4 border-gray-400 border-dashed pt-5 bg-white shadow p-3 rounded-lg">
+                      <span
+                        class=" text-xs font-semibold inline-block py-1 px-2  rounded text-red-600 bg-red-200 uppercase last:mr-0 mr-1">
+                        {{item.estado}}
+                      </span>
+                      <div class="w-full py-2"> </div>
+                      <a tabindex="0" class="font-semibold text-xl text-blueGray-700">
+                        {{item.proceso}} {{item.id}}
+                      </a>
+                      <p class="py-3 text-xs font-light leading-3 text-gray-500 dark:text-gray-300">
+                        {{item.fecha_inicial}}
+                      </p>
+                      <p class="text-sm pt-2 leading-4  text-gray-600 dark:text-gray-300">{{item.descripcion}} </p>
+                      <hr>
+                      <a tabindex="0"
+                        class="focus:outline-none text-lg font-medium leading-5 text-gray-800 dark:text-gray-100 mt-2">
+                        Duración: {{item.duracion}}
+                      </a>
+                    </div>
+                  </div>
+
+                </ng-container>
+
+              </div>
+
+
+            </div>
+
+
+
+
+
+          </form>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>

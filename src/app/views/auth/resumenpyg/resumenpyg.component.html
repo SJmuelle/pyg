@@ -1,0 +1,83 @@
+<div class="container mx-auto px-4 h-full">
+    <div class="flex content-center items-center justify-center h-full">
+        <div class="w-full px-4">
+            <div class="relative   min-w-0 break-words w-full mb-6 shadow-lg rounded-lg bg-blueGray-200 border-0">
+                <div class="rounded-t mb-0 px-6 py-6">
+                    <div class="text-center mb-3">
+                        <img alt="logo fintra" class="mx-auto" src="assets/img/Logo-Fintra.png" />
+                    </div>
+                    <hr class="mt-6 border-b-1 border-blueGray-300" />
+                </div>
+                <div class=" px-4 lg:px-10 py-10 pt-0">
+                    <form [formGroup]="form">
+                        <div class="container px-4 mx-auto">
+                            <div class="flex flex-wrap">
+                                <div class=" px-4 py-4 w-1/2">
+                                    <label class="block uppercase text-blueGray-600 text-xs font-bold mb-2"
+                                        htmlFor="grid-password">
+                                        Año
+                                    </label>
+                                    <input type="number" min="2017" max="{{hoy}}" step="1" formControlName="fecha"
+                                        class="border-0 px-3 py-3 placeholder-blueGray-300 text-blueGray-600 bg-white rounded text-sm shadow focus:outline-none focus:ring w-full ease-linear transition-all duration-150" />
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap">
+                                <div class=" w-full px-4  py-4 flex-1">
+                                    <div class="text-center mt-6">
+                                        <button class="
+                                                        text-white {{form.invalid?'bg-blueGray-700':'bg-lightBlue-500'}}
+                                                        text-sm font-bold
+                                                        uppercase
+                                                        px-6 py-3 rounded
+                                                        shadow hover:shadow-lg
+                                                        outline-none 
+                                                        focus:outline-none
+                                                        mr-1 
+                                                        mb-1 
+                                                        w-full 
+                                                        ease-linear" type="button" (click)="generate()"
+                                            [disabled]="form.invalid">
+                                            Actualizar
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-wrap">
+
+                                <ng-container *ngFor="let item of listado">
+                                    <div class=" w-full px-4  py-4 flex-1">
+                                        <div
+                                            class="h-card border-b pb-4 border-gray-400 border-dashed pt-5 bg-white shadow p-3 rounded-lg">
+                                            <div class="w-full py-2"> </div>
+                                            <a tabindex="0" class="font-semibold text-xl text-teal-500">
+                                                ${{item.saldo | number}}
+                                            </a>
+                                            <p class="text-sm pt-2 leading-4  text-gray-600 dark:text-gray-300 ">
+                                                {{item.nivel_1}}
+                                            </p>
+                                            <p
+                                                class="py-3 text-xs font-light leading-3 text-gray-500 dark:text-gray-300">
+                                                Analisis vertical: {{item.analisis_vertical | number}} </p>
+
+
+                                        </div>
+                                    </div>
+
+                                </ng-container>
+
+                            </div>
+
+
+                        </div>
+
+
+
+
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
